@@ -114,6 +114,8 @@ export interface StrategyRuntimeState {
 	backtest_available: boolean;
 	// UNIX timestamp when the executor main loop crashed with an exception
 	crashed_at: Nullable<UnixTimestamp>;
+  // List of badges the strategy tile can show
+  badges?: string[];
 }
 
 export async function getStrategiesWithRuntimeState(
@@ -180,7 +182,8 @@ export async function getStrategiesWithRuntimeState(
 				error,
 				frozen_positions: payload.frozen_positions,
 				backtest_available: payload.backtest_available,
-				crashed_at: payload.crashed_at
+				crashed_at: payload.crashed_at,
+        badges: payload.badges,
 			};
 		})
 	);

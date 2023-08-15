@@ -39,14 +39,8 @@
 
 	// FIXME: hack to infer list of tokens based on strategy ID;
 	// In the future this will come from the strategy configuration.
-	function getStrategyTokens({ id }: StrategyRuntimeState) {
-		if (id.includes('multipair')) {
-			return ['usdc'];
-		} else if (id.includes('matic')) {
-			return ['matic', 'usdc'];
-		} else {
-			return ['eth', 'usdc'];
-		}
+	function getStrategyBadges(strategy: StrategyRuntimeState) {
+        debugger;
 	}
 </script>
 
@@ -124,7 +118,7 @@
 					</Tooltip>
 				{/if}
 
-				{#each getStrategyTokens(strategy) as token}
+				{#each getStrategyBadges(strategy) as token}
 					{@const symbol = token.toUpperCase()}
 					<Tooltip>
 						<img slot="trigger" alt={symbol} src={getLogoUrl('token', token)} />
